@@ -1,0 +1,146 @@
+/*the hot key for commenting in css is type, then highlight and cntrl+/ then it will change to comment, or just use hotkey and it will auto populate*/
+/* to start a section periods are used for targeting elements with a specific class attribute, # is used when targeting elements with a unique ID-- only one element should have this id, and you use no symbol when targeting html tags like body, p, h1, div
+
+EXAMPLE: 
+<div id="header">This is a unique header</div>
+<p class="intro">This is an introductory paragraph.</p>
+<p>This is another paragraph.</p>
+<button class="intro">Click Me</button>
+
+THE CSS WOULD BE:
+
+#header { **Targets the div with id="header"
+  background-color: lightblue;
+  color: navy;
+}
+
+.intro { **Targets elements with class="intro"
+  font-weight: bold;
+}
+
+p { **Targets all <p> elements 
+  color: gray;
+}
+*/
+
+/* using an * asterisk targets all elements on the page */
+/* ---GENERAL--- */
+@font-face {
+  font-family: "Mochi-Regular";
+  src: url("./assets/Mochi-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/*the fixed position is for the entire welcome section-- will need to make sure once splash page is complete that that is not the same for other pages */
+body {
+  font-family: "Mochi-Regular", sans-serif;
+  background-color: #d7ecb0;
+  background-size: cover;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/*WELCOME PAGE*/
+.welcome-container {
+  position: relative;
+  display: flex;
+  width: auto;
+  height: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+}
+
+.welcome-container img {
+  max-width: 80vw;
+  max-height: 90vh;
+  width: auto;
+  height: 100%
+    object-fit: contain;
+  display: block;
+}
+
+.btn-container-parent {
+  display: flex;
+position: absolute;
+  text-align: center;
+  font: 2rem;
+    top: 66.4%;
+  left: 51%;
+  transform: translate(-50%, -50%);
+}
+
+/*Why does position: absolute work for overlaying?
+When you set .btn-container-parent to position: absolute;, it is taken out of the normal document flow and positioned relative to its nearest ancestor with position: relative; (in your case, .welcome-container).
+This allows you to place .btn-container-parent anywhere over the image using top, left, and transform, so you can center it on top of the image, rather than stacking it above or below in the flex column.*/
+.btn-container {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  background-color: none;
+  font-size: 2rem;
+  padding-right: 1rem;
+}
+
+/*need to add a hover effect to the buttons*/
+.new-btn,
+.exit-btn {
+  font-family: Mochi-Regular, sans-serif;
+  font-weight: 300;
+  color: #fee9a8;
+  transition: all 300ms ease;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  text-align: left;
+  margin-right: 2.5rem;
+}
+
+.new-btn {
+  margin-bottom: -1.5rem;
+}
+/*
+The content: ""; in CSS is used with pseudo-elements like ::before or ::after.
+It creates a generated content box before or after the element.
+When you set content: "";, it creates an empty pseudo-element that you can style (for example, to show an icon, background image, or shape).
+*/
+
+/*
+display: inline-block; makes an element behave like both an inline and a block element:
+
+Like inline: It flows with text on the same line, so it doesn’t force a line break before or after itself.
+Like block: You can set its width, height, margin, and padding.
+In your CSS, using display: inline-block; on the ::before pseudo-element allows you to:
+
+Set a specific width and height for the icon.
+Have the icon appear next to the button text (on the same line), rather than above it (which would happen with display: block;).
+*/
+
+.new-btn::before,
+.exit-btn::before {
+  content: "";
+  display: inline-block;
+  width: 3rem;
+  height: 3rem;
+  vertical-align: middle;
+  margin-bottom: 1rem;
+ margin-left: 1rem;
+  background-image: url("./assets/playbutton.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center; 
+  transform: scale(0.5);
+  transition: opacity 0.6s, transform 0.6s;
+  opacity: 0;
+
+}
+
+.new-btn:hover::before,
+.exit-btn:hover::before {
+  opacity: 1;
+  transform: scale(1.5);
+}

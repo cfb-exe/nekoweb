@@ -33,6 +33,25 @@ p { **Targets all <p> elements
 }
 
 /*the fixed position is for the entire welcome section-- will need to make sure once splash page is complete that that is not the same for other pages */
+
+
+/*
+The content: ""; in CSS is used with pseudo-elements like ::before or ::after.
+It creates a generated content box before or after the element.
+When you set content: "";, it creates an empty pseudo-element that you can style (for example, to show an icon, background image, or shape).
+*/
+
+/*
+display: inline-block; makes an element behave like both an inline and a block element:
+
+Like inline: It flows with text on the same line, so it doesn’t force a line break before or after itself.
+Like block: You can set its width, height, margin, and padding.
+In your CSS, using display: inline-block; on the ::before pseudo-element allows you to:
+
+Set a specific width and height for the icon.
+Have the icon appear next to the button text (on the same line), rather than above it (which would happen with display: block;).
+*/
+
 body {
   font-family: "Mochi-Regular", sans-serif;
   background-color: #d7ecb0;
@@ -71,46 +90,31 @@ body {
   display: block;
   margin: auto;
 }
-
+/*image needs to be outside of the overlay content*/
 .overlay-content {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
-  color: #fee9a8; /* or your preferred color */
-  width: 100%;
+  color: #fee9a8;
+  width: auto;
+  max-width: 90vw;
   z-index: 2;
-}
-
-.btn-container {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  align-items: center;
-  margin-top: 2rem;
+  font-size: calc(1.5vw + 1.5vh + 1rem); /* Responsive scaling */
 }
 
 .btn-container-parent {
   display: flex;
-  position: absolute;
-  text-align: center;
-  font: 2rem;
-  top: 66.4%;
-  left: 51%;
-  transform: translate(-50%, -50%);
+  justify-content: center;
+  align-items: center;
 }
 
-/*Why does position: absolute work for overlaying?
-When you set .btn-container-parent to position: absolute;, it is taken out of the normal document flow and positioned relative to its nearest ancestor with position: relative; (in your case, .welcome-container).
-This allows you to place .btn-container-parent anywhere over the image using top, left, and transform, so you can center it on top of the image, rather than stacking it above or below in the flex column.*/
 .btn-container {
   display: flex;
   flex-direction: column;
   text-align: center;
   background-color: none;
-  font-size: 2rem;
-  padding-right: 1rem;
 }
 
 /*need to add a hover effect to the buttons*/
@@ -122,40 +126,18 @@ This allows you to place .btn-container-parent anywhere over the image using top
   transition: all 300ms ease;
   background: none;
   border: none;
-  font-size: 2rem;
   text-align: left;
-  margin-right: 2.5rem;
+  padding: 0.5em 2em;
+  margin: 0.5em 0;
 }
-
-.new-btn {
-  margin-bottom: -1.5rem;
-}
-/*
-The content: ""; in CSS is used with pseudo-elements like ::before or ::after.
-It creates a generated content box before or after the element.
-When you set content: "";, it creates an empty pseudo-element that you can style (for example, to show an icon, background image, or shape).
-*/
-
-/*
-display: inline-block; makes an element behave like both an inline and a block element:
-
-Like inline: It flows with text on the same line, so it doesn’t force a line break before or after itself.
-Like block: You can set its width, height, margin, and padding.
-In your CSS, using display: inline-block; on the ::before pseudo-element allows you to:
-
-Set a specific width and height for the icon.
-Have the icon appear next to the button text (on the same line), rather than above it (which would happen with display: block;).
-*/
 
 .new-btn::before,
 .exit-btn::before {
   content: "";
   display: inline-block;
-  width: 3rem;
-  height: 3rem;
+  width: 1.2em;
+  height: 1.2em;
   vertical-align: middle;
-  margin-bottom: 1rem;
-  margin-left: 1rem;
   background-image: url("./assets/playbutton.png");
   background-size: contain;
   background-repeat: no-repeat;

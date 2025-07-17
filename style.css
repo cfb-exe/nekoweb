@@ -45,6 +45,7 @@ body {
 }
 
 .welcome-container {
+  display: flex;
   height: 50%;
   width: 50%;
   position: absolute;

@@ -40,15 +40,10 @@ It creates a generated content box before or after the element.
 When you set content: "";, it creates an empty pseudo-element that you can style (for example, to show an icon, background image, or shape).
 */
 
-.btn-container-parent {
-  display: flex;
+.btn-container {
+  position: absolute
   justify-content: center;
   align-items: center;
-  width: 100%;
-  height: 100%;
-}
-
-.btn-container {
   display: flex;
   flex-direction: column;
   text-align: center;

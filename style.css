@@ -13,27 +13,8 @@ body {
   font-family: "Mochi-Regular", sans-serif;
   background-color: #d7ecb0;
   background-size: cover;
-}
-
-html {
-  scroll-behavior: smooth;
-  ::-webkit-scrollbar-thumb {
-    background-color: #fbbfcb;
-    border-radius: 5px;
-  }
-  ::-webkit-scrollbar {
-    width: 5px;
-    height: 0px;
-    background: transparent;
-  }
-}
-
-html,
-body {
-  height: 100%;
   margin: 0;
   padding: 0;
-  overflow: hidden; /* Prevent scrollbars */
 }
 
 /*WELCOME PAGE*/
@@ -43,24 +24,12 @@ body {
   justify-content: center;
   align-items: center; /* Centers content vertically */
   overflow: hidden;
-  width: 100vw;
+  width: 100wh;
   height: 100vh;
   background-image: url("./assets/3ds.png");
   background-repeat: no-repeat;
   background-position: center;
-}
-/*image needs to be outside of the overlay content*/
-.overlay-content {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-  color: #fee9a8;
-  width: auto;
-  max-width: 90vw;
-  z-index: 2;
-  font-size: calc(1.5vw + 1.5vh + 1rem); /* Responsive scaling */
+  background-size: contain;
 }
 
 /*---BUTTONS---*/
@@ -75,6 +44,8 @@ When you set content: "";, it creates an empty pseudo-element that you can style
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100%;
+  height: 100%;
 }
 
 .btn-container {

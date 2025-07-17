@@ -1,29 +1,6 @@
-/*the hot key for commenting in css is type, then highlight and cntrl+/ then it will change to comment, or just use hotkey and it will auto populate*/
-/* to start a section periods are used for targeting elements with a specific class attribute, # is used when targeting elements with a unique ID-- only one element should have this id, and you use no symbol when targeting html tags like body, p, h1, div
+/*the hot key for commenting in css is type, then highlight and cntrl+/ then it will change to comment, or just use hotkey and it will auto populate
+using an * asterisk targets all elements on the page */
 
-EXAMPLE: 
-<div id="header">This is a unique header</div>
-<p class="intro">This is an introductory paragraph.</p>
-<p>This is another paragraph.</p>
-<button class="intro">Click Me</button>
-
-THE CSS WOULD BE:
-
-#header { **Targets the div with id="header"
-  background-color: lightblue;
-  color: navy;
-}
-
-.intro { **Targets elements with class="intro"
-  font-weight: bold;
-}
-
-p { **Targets all <p> elements 
-  color: gray;
-}
-*/
-
-/* using an * asterisk targets all elements on the page */
 /* ---GENERAL--- */
 @font-face {
   font-family: "Mochi-Regular";
@@ -31,26 +8,6 @@ p { **Targets all <p> elements
   font-weight: normal;
   font-style: normal;
 }
-
-/*the fixed position is for the entire welcome section-- will need to make sure once splash page is complete that that is not the same for other pages */
-
-
-/*
-The content: ""; in CSS is used with pseudo-elements like ::before or ::after.
-It creates a generated content box before or after the element.
-When you set content: "";, it creates an empty pseudo-element that you can style (for example, to show an icon, background image, or shape).
-*/
-
-/*
-display: inline-block; makes an element behave like both an inline and a block element:
-
-Like inline: It flows with text on the same line, so it doesn’t force a line break before or after itself.
-Like block: You can set its width, height, margin, and padding.
-In your CSS, using display: inline-block; on the ::before pseudo-element allows you to:
-
-Set a specific width and height for the icon.
-Have the icon appear next to the button text (on the same line), rather than above it (which would happen with display: block;).
-*/
 
 body {
   font-family: "Mochi-Regular", sans-serif;
@@ -60,6 +17,15 @@ body {
 
 html {
   scroll-behavior: smooth;
+  ::-webkit-scrollbar-thumb {
+    background-color: #fbbfcb;
+    border-radius: 5px;
+  }
+  ::-webkit-scrollbar {
+    width: 5px;
+    height: 0px;
+    background: transparent;
+  }
 }
 
 html,
@@ -79,25 +45,9 @@ body {
   overflow: hidden;
   width: 100vw;
   height: 100vh;
-}
-
-.scale-group {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.welcome-container img {
-  max-width: 100vw;
-  max-height: 100vh;
-  width: auto;
-  height: auto;
-  object-fit: contain;
-  display: block;
-  margin: auto;
+  background-image: url("./assets/3ds.png");
+  background-repeat: no-repeat;
+  background-position: center;
 }
 /*image needs to be outside of the overlay content*/
 .overlay-content {
@@ -112,6 +62,14 @@ body {
   z-index: 2;
   font-size: calc(1.5vw + 1.5vh + 1rem); /* Responsive scaling */
 }
+
+/*---BUTTONS---*/
+
+/*
+The content: ""; in CSS is used with pseudo-elements like ::before or ::after.
+It creates a generated content box before or after the element.
+When you set content: "";, it creates an empty pseudo-element that you can style (for example, to show an icon, background image, or shape).
+*/
 
 .btn-container-parent {
   display: flex;

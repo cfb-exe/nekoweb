@@ -9,6 +9,18 @@ using an * asterisk targets all elements on the page */
   font-style: normal;
 }
 
+* {
+  margin: 0;
+  padding: 0;
+}
+/*this is a custom shortcut for most used elements so I don't have to put the hex code each time
+to use: var(--primary-color) or whatever the variable is namedq
+*/
+
+:root {
+  --btn-color: #fee9a8;
+}
+
 body {
   font-family: "Mochi-Regular", sans-serif;
   background-color: #d7ecb0;
@@ -17,37 +29,36 @@ body {
   padding: 0;
 }
 
-/*WELCOME PAGE*/
-.welcome-container {
-  position: relative;
-  display: flex;
+/*---SECTIONS---*/
+
+#welcome-page {
   justify-content: center;
-  align-items: center; /* Centers content vertically */
-  overflow: hidden;
-  width: 100wh;
   height: 100vh;
-  background-image: url("./assets/3ds.png");
-  background-repeat: no-repeat;
-  background-position: center;
+  width: 100vw;
+  background: url("./assets/3ds.png") no-repeat;
   background-size: contain;
+  background-position: center;
 }
 
+.welcome-container {
+height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 /*---BUTTONS---*/
 
-/*
-The content: ""; in CSS is used with pseudo-elements like ::before or ::after.
-It creates a generated content box before or after the element.
-When you set content: "";, it creates an empty pseudo-element that you can style (for example, to show an icon, background image, or shape).
-*/
-
 .btn-container {
-  position: absolute
+  position: relative;
   justify-content: center;
   align-items: center;
   display: flex;
   flex-direction: column;
-  text-align: center;
+  top: 25vh;
   background-color: none;
+  text-align: left;
 }
 
 /*need to add a hover effect to the buttons*/
@@ -55,13 +66,11 @@ When you set content: "";, it creates an empty pseudo-element that you can style
 .exit-btn {
   font-family: Mochi-Regular, sans-serif;
   font-weight: 300;
+  font-size: 3rem;
   color: #fee9a8;
   transition: all 300ms ease;
   background: none;
   border: none;
-  text-align: left;
-  padding: 0.5em 2em;
-  margin: 0.5em 0;
 }
 
 .new-btn::before,
@@ -75,7 +84,6 @@ When you set content: "";, it creates an empty pseudo-element that you can style
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
-  transform: scale(0.5);
   transition: opacity 0.6s, transform 0.6s;
   opacity: 0;
 }
@@ -85,3 +93,9 @@ When you set content: "";, it creates an empty pseudo-element that you can style
   opacity: 1;
   transform: scale(1.5);
 }
+
+/*
+The content: ""; in CSS is used with pseudo-elements like ::before or ::after.
+It creates a generated content box before or after the element.
+When you set content: "";, it creates an empty pseudo-element that you can style (for example, to show an icon, background image, or shape).
+*/

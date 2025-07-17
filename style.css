@@ -27,38 +27,46 @@ body {
   background-size: cover;
   margin: 0;
   padding: 0;
+  overflow: hidden; /* Prevent scrollbars */
 }
 
 /*---SECTIONS---*/
 
 #welcome-page {
   justify-content: center;
+  position: relative;
+  display: flex;
   height: 100vh;
   width: 100vw;
+  justify-content: center;
   background: url("./assets/3ds.png") no-repeat;
   background-size: contain;
   background-position: center;
 }
 
 .welcome-container {
-height: 100vh;
-  width: 100vw;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  height: 50%;
+  width: 50%;
+  position: absolute;
+  top: 75%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 /*---BUTTONS---*/
 
 .btn-container {
-  position: relative;
+  position: absolute;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start; /*for some reason align left doesnt work*/
   display: flex;
   flex-direction: column;
-  top: 25vh;
+  height: 300px;
+  width: 300px;
   background-color: none;
-  text-align: left;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding-bottom: 35px;
 }
 
 /*need to add a hover effect to the buttons*/
@@ -71,28 +79,41 @@ height: 100vh;
   transition: all 300ms ease;
   background: none;
   border: none;
+  vertical-align: right;
 }
 
+/*the initial opacity is 1, then ended at 0, but with 50% opacity */
+@keyframes blink {
+  10%
+  10% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
 .new-btn::before,
 .exit-btn::before {
   content: "";
   display: inline-block;
   width: 1.2em;
   height: 1.2em;
-  vertical-align: middle;
+  vertical-align: left;
   background-image: url("./assets/playbutton.png");
   background-size: contain;
-  background-repeat: no-repeat;
   background-position: center;
-  transition: opacity 0.6s, transform 0.6s;
   opacity: 0;
 }
+ 
 
 .new-btn:hover::before,
-.exit-btn:hover::before {
+.exit-btn:hover::before{
   opacity: 1;
   transform: scale(1.5);
+  animation: blink 1s infinite;
+  animation-delay: .2s;
 }
+/* matches the transition duration */
 
 /*
 The content: ""; in CSS is used with pseudo-elements like ::before or ::after.
